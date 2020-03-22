@@ -8,6 +8,6 @@ include_directories("headers" "sources")
 file(GLOB source_files "headers/*.h" "sources/*.cpp")
 
 # Add source to this project's executable.
-add_executable (FacilityLocation "FacilityLocation.cpp" "FacilityLocation.h" ${source_files})
+add_executable (FacilityLocation "FacilityLocation.cpp" ${source_files})
 
 # TODO: Add tests and install targets if needed.

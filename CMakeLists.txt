@@ -3,6 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+
 project ("FacilityLocation")
 
 # Include sub-projects.

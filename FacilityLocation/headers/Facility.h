@@ -10,19 +10,40 @@ class Facility
 {
 public:
 	
+    // CONSTRUCTOR //
     Facility(int index, double setup_cost, double capacity, double x, double y);
 	~Facility();
-    void closeFacility();
-    void openFacility();
+    // UTILITY //
     bool isCloseFacility();
+    // GETTER //
+    std::vector<Customer*> GetNearCustomers(int n);
+    std::vector<Facility*> GetNearFacilities(int n);
     Location& getLocation();
+    std::vector<Customer*> getCustomers();
+    double GetCapacity();
+    double GetSetUp();
+    int getIndex();
+    double getAllMeanDistance();
+    // SETTER //
+    void setAllMeanDistance(std::vector<Customer*>& customers);
+    void SetNearCustomers(std::vector<Customer*>);
+    void SetNearFacilities(std::vector<Facility*>);
+    // CHECK OPERATION //
     bool canAddCustomer(Customer* customer);
     bool canSwapCustomers(Customer* customer_a, Customer* customer_b);
-    double GetFacilityCost();
+    // COST CALCULATION //
+    double calculateAddCost(Customer* customer);
+    double calculateRemoveCost(Customer* customer);
+    double calculateSwapCost(Customer* customer_a, Customer* customer_b);
+    double calculateDistance(Customer* customer);
+    double calculateDistance(Facility* facility);
+    double calculateFacilityCost();
     double calculateAllDistance(std::vector<Customer*>& customers);
     double calculateCustomersCapacity();
+    // MOVING OPERATION //
+    bool removeAllCustomers();
     bool removeCustomer(Customer* customer);
-    bool addCustomercustomer(Customer* customer);
+    bool addCustomer(Customer* customer);
 
 private:
 	int _index;
@@ -31,6 +52,13 @@ private:
 	double _capacity;
 	bool _is_open;
 	std::vector<Customer*> _customers;
+    double _all_mean_distance;
+
+    std::vector<Customer*> _near_customers;
+    std::vector<Facility*> _near_facilities;
+
+    void closeFacility();
+    void openFacility();
 };
 
 #endif
